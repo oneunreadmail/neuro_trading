@@ -1,6 +1,6 @@
 import neuro
 import trading
-import pandas as pd
+#import pandas as pd
 import numpy as np
 
 rows = 50  # Количество примеров на вход
@@ -41,7 +41,7 @@ for i in range(test_rows):
 n = neuro.Perceptron([columns, columns * 2, columns * 2, columns * 2, len(out_markers)])
 print("Ло тренировки средняя погрешность на ячейку", n.how_close(test_b,test_c))
 print("А количество ошибок — ", n.how_many_mistakes(test_b,test_c))
-n.learn_these(b, c, iterations=1000000, print_progress=True)
+n.learn_these(b, c, iterations=10000, print_progress=True)
 print("После тренировки погрешность уменьшилась до", n.how_close(test_b,test_c))
 print("А число ошибок — до", n.how_many_mistakes(test_b,test_c))
 

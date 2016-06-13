@@ -4,7 +4,7 @@ import pandas as pd
 class Instrument:
     def __init__(self, filename, rows=None):
         self.filename = filename
-        self.dataframe = pd.read_csv(filename, sep=";", encoding="cp1251", nrows=rows, parse_dates=[[2, 3]])
+        self.dataframe = pd.read_csv(filename, sep=";", nrows=rows, parse_dates=[[2, 3]])
         del self.dataframe['<PER>']
         del self.dataframe['<TICKER>']
         self.dataframe.columns = ("date_time", "open", "high", "low", "close", "volume")
@@ -67,7 +67,7 @@ class Broker:
 
 
 if __name__ == '__main__':
-    RTS = Instrument('SPFB.RTS_150101_160101.csv', 50)
+    RTS = Instrument('data/SPFB.RTS_150101_160101.csv', 50)
     finam = Broker()
     finam.simulate(RTS, [0,1,0,-1,1,0,-1,-1,-1])
     #print(finam.deal_prices)
